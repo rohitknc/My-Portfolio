@@ -1,16 +1,16 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const items = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      entry.target.classList.add('visible');
-      obs.unobserve(entry.target);
-    });
-  }, { threshold: 0.12 });
-  items.forEach(item => observer.observe(item));
+const revealEls = document.querySelectorAll('.reveal');
 
-  const header = document.querySelector('.site-header');
-  const updateHeader = () => header.classList.toggle('scrolled', window.scrollY > 16);
-  updateHeader();
-  window.addEventListener('scroll', updateHeader, { passive: true });
-});
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealEls.forEach((el) => io.observe(el));
+} else {
+  revealEls.forEach((el) => el.classList.add('visible'));
+}
