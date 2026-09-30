@@ -9,6 +9,7 @@ import CloudRounded from '@mui/icons-material/CloudRounded';
 import CodeRounded from '@mui/icons-material/CodeRounded';
 import EmailRounded from '@mui/icons-material/EmailRounded';
 import GitHub from '@mui/icons-material/GitHub';
+import profileImage from '../profile.png';
 import LinkedIn from '@mui/icons-material/LinkedIn';
 import StorageRounded from '@mui/icons-material/StorageRounded';
 import TerminalRounded from '@mui/icons-material/TerminalRounded';
@@ -129,7 +130,7 @@ function App() {
               <Grid size={{xs:12,md:5}}>
                 <Paper elevation={0} sx={{p:1.2,borderRadius:4,bgcolor:'white',boxShadow:'0 28px 70px rgba(26,71,112,.14)',transform:{md:'rotate(1.5deg)'}}}>
                   <Box sx={{position:'relative',borderRadius:3,overflow:'hidden',aspectRatio:'4/4.8',bgcolor:'#DDE8F2'}}>
-                    <Box component="img" src="/profile.png" alt="Kanjarla Narasimha Charyulu" sx={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top'}} />
+                    <Box component="img" src={profileImage} alt="Kanjarla Narasimha Charyulu" sx={{width:'100%',height:'100%',objectFit:'cover',objectPosition:'center top'}} />
                     <Box sx={{position:'absolute',left:18,right:18,bottom:18,p:2,borderRadius:2.5,bgcolor:'rgba(9,35,62,.88)',color:'white',backdropFilter:'blur(10px)'}}>
                       <Typography fontWeight={800}>Kanjarla Narasimha Charyulu</Typography>
                       <Typography variant="caption" sx={{opacity:.8}}>Dynamics 365 · Power Platform · AI</Typography>
