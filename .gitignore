@@ -1,0 +1,11 @@
+# >>> Quicker Portal IDE: dependencies and build output >>>
+# Appended, never reordered or removed. Edit or delete these freely.
+# npm dependencies
+node_modules/
+# build output
+dist/
+# npm crash logs
+npm-debug.log*
+# yarn crash logs
+yarn-error.log*
+# <<< Quicker Portal IDE <<<

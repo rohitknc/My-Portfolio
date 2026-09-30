@@ -1,16 +1,30 @@
 const revealEls = document.querySelectorAll('.reveal');
 
-if ('IntersectionObserver' in window) {
-  const io = new IntersectionObserver((entries) => {
+const reveal = () => {
+  if (!('IntersectionObserver' in window)) {
+    revealEls.forEach((el) => el.classList.add('visible'));
+    return;
+  }
+
+  const io = new IntersectionObserver((entries, observer) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        io.unobserve(entry.target);
-      }
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.14 });
 
   revealEls.forEach((el) => io.observe(el));
-} else {
-  revealEls.forEach((el) => el.classList.add('visible'));
-}
+};
+
+reveal();
+
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    const id = link.getAttribute('href');
+    const target = document.querySelector(id);
+    if (!target) return;
+    event.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+});
