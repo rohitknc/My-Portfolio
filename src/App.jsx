@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
+import { Analytics } from "@vercel/analytics/next";
 import '../styles.css';
 import {
   AppBar, Avatar, Box, Button, Chip, Container, CssBaseline, Divider,
@@ -558,6 +559,7 @@ function App() {
         {selectedProject && <CaseStudyDialog project={selectedProject} onClose={closeCaseStudy} />}
       </Box>
     </MotionConfig>
+    <Analytics/>
   </ThemeProvider>;
 }
 
