@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { Analytics } from "@vercel/analytics/next";
+import { Analytics } from "@vercel/analytics/react";
 import '../styles.css';
 import {
   AppBar, Avatar, Box, Button, Chip, Container, CssBaseline, Divider,
