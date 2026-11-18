@@ -1,68 +1,48 @@
-# KNC Portfolio — Project Spotlights, Refined Header Sound Control (v12)
+# Narasimha Charyulu — Portfolio
 
-Responsive React portfolio for Kanjarla Narasimha Charyulu. The downloadable resume in `public/Kanjarla-Narasimha-Charyulu-Resume.pdf` is the exact PDF supplied by the owner.
+A Next.js App Router portfolio for **Kanjarla Narasimha Charyulu**, the original portfolio owner and the user's friend. All biographical information, portraits, résumé files, project descriptions, and reported metrics belong to Narasimha, not the person requesting these changes.
 
-## Stack
+## Run
 
-- React 19 and Vite 8
-- Material UI 7
-- Motion for React for case-study interactions and restrained reveal motion
-- CSS-only water-light caustics, flowing rays, drifting particles, bubbles and pointer-following glow
-- Locally bundled 54-second single-note ambient track, with no chords, percussion or water noise
+Use Node.js 22.13 or later.
 
-## What's new in v12
-
-- Replaced the oversized header sound control and boxed status badge with a compact circular waveform button, aligned to the Resume button. Sound state is conveyed by a small dot and accessible tooltip, not a floating label below the icon.
-- Reduced the visual pulse and glow so the header looks calm and professional.
-- Improved header spacing and responsive sizing for narrow screens to avoid cramped navigation.
-- Increased the visibility and balance of the KNC monogram.
-
-## Earlier changes in v11
-
-- Moved music control into the top navigation as a compact circular waveform icon with a small `SOUND ON/OFF` label, inspired by the supplied reference screenshot.
-- Removed the fixed bottom-right sound panel.
-- Replaced the old `K.` avatar with a custom `KNC` monogram mark using a cyan-to-violet gradient and restrained highlight.
-- Replaced the track with a quieter 54-second sequence of soft, isolated notes. No chord stacks, drum sounds or ocean noise are used.
-- Playback starts after the visitor's first meaningful interaction because browsers generally block unsolicited autoplay. The sound icon lets the visitor toggle ambience at any time.
-- Kept the water layers CSS-driven to avoid reintroducing full-screen canvas redraws and flicker.
-- Preserved the project-specific case-study visuals, complete skill catalog, portrait and downloadable resume.
-
-## Run on Windows PowerShell
-
-```powershell
+```sh
 npm install
-npm start
+npm run dev
 ```
 
-Open the local URL printed by Vite (normally `http://localhost:5173`). For production verification:
+Production:
 
-```powershell
+```sh
 npm run build
-npm run preview
+npm start
+npm run verify # while the production server is running
 ```
 
-Use Node.js 20.19+ or 22.12+ for Vite 8.
+## Architecture
 
-## Included
+- Next.js 16, React 19, stable React Compiler.
+- Server Components for page content and metadata; small client components for filtering, navigation, search, clipboard, and audio.
+- Project data and complete skill catalog: `lib/content.js`.
+- Four statically generated case-study URLs under `/work`.
+- Locally hosted, preloaded DM Sans and Instrument Serif fonts via next/font, with adjusted fallbacks; optimized `next/image` portrait.
+- Native accessible dialog, Cmd/Ctrl+K search, keyboard result navigation, mobile navigation, a single ivory/forest/copper theme, project filters with React transitions, native skills disclosures, opt-in audio, clipboard feedback, reduced-motion and print styles.
+- Interactive four-system architecture walkthrough with stage selection, local playback, and example payload views.
+- Featured/reversed project layouts, grid/list switch, accessible quick-view dialogs with focus return, section navigation and scroll progress, Hyderabad local clock, portrait hover depth, and email topic selection.
+- No external contact-form service or fabricated project screenshots. Architecture illustrations are labeled conceptual.
 
-- Dark navy/cyan portfolio UI, complete portrait, exact supplied resume PDF, four resume-based project case studies, experience, skills, education and contact sections.
-- Responsive navigation, header sound control, downloadable resume, accessible case-study dialog and reduced-motion support.
+## SEO and deployment
 
-## Content integrity
+Deploy as a Next.js project (for example, on Vercel). Set `NEXT_PUBLIC_SITE_URL` to the final canonical HTTPS domain **before building**. Its default preserves the domain from the original sitemap. This value controls canonical URLs, sitemap entries, structured data and social metadata.
 
-Project details and reported metrics come from the supplied resume versions. Verify metric accuracy and project confidentiality before public deployment. A complete LinkedIn URL was not present in the supplied resume, so no LinkedIn URL has been invented.
+The site includes pre-rendered meaningful HTML, route-specific titles/descriptions and canonical links, Person JSON-LD, an automatically generated social preview, sitemap and robots routes, descriptive image alternatives, and a custom 404. SEO foundations do not guarantee search ranking.
 
-## Verification
+Both original PDFs are retained; all active résumé buttons consistently use `/Kanjarla-Narasimha-Charyulu-Resume.pdf`. The old Vite source is archived in `docs/legacy-vite-src` with the former stylesheet and entry files in `docs/`; it is not used by Next.js.
 
-The JSX source was checked with TypeScript's JSX transpiler, CSS braces were validated, the supplied resume was copied byte-for-byte to `public`, the ambient MP3 was probed as a 54-second stereo track, and the ZIP archive was integrity-tested. A full dependency build still requires a working npm registry; run `npm install` and `npm run build` locally before deployment.
+See `docs/design-research.md` for references and design decisions. No public deployment or Git push is performed by the migration itself.
 
+Production builds use Next.js’s supported Webpack backend because Turbopack stalled on this local filesystem. The default dev server continues to use Turbopack.
 
-## V13 responsive alignment update
+## Standalone PDF preview sample
 
-- Normalized project cards into a consistent vertical layout with matching visual-panel heights and aligned project detail / technology sections on desktop.
-- Updated cards and diagrams to use min-width-safe grids, text wrapping, and mobile-specific layouts.
-- Improved alignment and wrapping across capability cards, experience timeline, education, contact actions, proof metrics, and modal.
-- Adjusted spacing for small phones (including <=370px viewports) and reduced hover transforms on touch devices.
-- Added class hooks for project title, summary, contribution copy, and technology-tag stack to coordinate card baselines.
-
-Run locally with `npm install` then `npm start`. The production build should be checked locally because package registry access was unavailable during this editing session.
+Open `/resume-studio` for Paper / Studio: a reference-inspired desk scene with a real two-page PDF, selectable text, page controls, zoom, local PDF selection and downloads. See `docs/resume-studio.md` for architecture, generation and privacy details. The fictional sample is separate from Narasimha’s professional content.

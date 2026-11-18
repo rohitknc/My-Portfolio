@@ -1,7 +1,13 @@
 node_modules
+.next
+out
 dist
 .DS_Store
 *.local
 .env
 .env.*
 !.env.example
+public/resume-studio/cmaps/
+public/resume-studio/standard_fonts/
+public/resume-studio/wasm/
+tmp/pdfs/
